@@ -1,5 +1,6 @@
 package com.multi.basic;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 //최댓값,최솟값,평균값,평균보다 높은키의 갯수 ,평균보다 낮은 키의 갯수
 public class ArrayEx1 {
@@ -49,6 +50,12 @@ public class ArrayEx1 {
 //    }
 
     public static void main(String[] args) {
+      int []height={150,180,190,188,178,182,179,199};
+        System.out.println("최댓값"+getMaxHeight(height));
+        System.out.println("최솟값"+getMinHeight(height));
+        System.out.println("평균키"+getAvgHeight(height));
+        System.out.println("평균보다  큰 키 개수 :"+getCountAboveAbverage(1,height));
+        System.out.println("평균보다 작은 키 개수:"+getCountAboveAbverage(2,height));
 
     }
 }
