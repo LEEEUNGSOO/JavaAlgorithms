@@ -11,9 +11,22 @@ public class ArrayStack {
         capacity = size;
         top = -1;
     }
+
+    //isFull
+    public boolean isFull(){
+        return top==stack.length-1;
+    }
+    //배열공간을 확장해서 만들고 기존 배열을 복사에서 확장된 배열에 넣어준다
+    public void increment(){
+        int []imsi=new int[stack.length*2+3];
+        System.arraycopy(stack,0,imsi,0,stack.length);
+        stack=imsi;
+
+    }
     public void push(int value) {
-      if(top==capacity-1){//Full
-          System.out.println("Stack is full");
+      if(isFull()){//Full
+          increment();
+         // System.out.println("Stack is full");
           return;
       } //if
       stack[++top]=value;//
@@ -37,6 +50,15 @@ public class ArrayStack {
         }
         return stack[top];//현재 top값을 반환
     }
+    public void disp(){
+        if(isEmpty()){
+            System.out.println("Stack underflow");return;
+        }
+        for(int i=top;i>=0;i--){
+            System.out.printf("%3d",stack[i]);
+        }
+        System.out.println();
+    }
 
 
 
@@ -45,14 +67,18 @@ public class ArrayStack {
         stack.push(10);
         stack.push(20);
         stack.push(30);
+        stack.push(40);
+        stack.push(50);
+        stack.push(60);
+        stack.disp();
 //        System.out.println("peek="+stack.peek());
 //        System.out.println("peek="+stack.peek());
 //        System.out.println("pop="+stack.pop());
 //        System.out.println("peek="+stack.peek());
-        while(!stack.isEmpty()){
-            System.out.println(stack.pop());
-        }
-        System.out.println("Pop on empty stack: " + stack.pop()); // 스택 비었을 때
+//        while(!stack.isEmpty()){
+//            System.out.println(stack.pop());
+//        }
+//        System.out.println("Pop on empty stack: " + stack.pop()); // 스택 비었을 때
 
 
 
