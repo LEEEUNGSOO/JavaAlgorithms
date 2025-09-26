@@ -2,7 +2,7 @@ package com.multi.basic;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-//최댓값,최솟값,평균값,평균보다 높은키의 갯수 ,평균보다 낮은 키의 갯수
+//최댓값,최솟값,평균값,평균보다 높은 키의 갯수 ,평균보다 낮은 키의 갯수
 public class ArrayEx1 {
     public static int getMaxHeight(int []height) {
         int max = height[0];
