@@ -27,7 +27,7 @@ public class ArrayStack {
       if(isFull()){//Full
           increment();
          // System.out.println("Stack is full");
-          return;
+         // return;
       } //if
       stack[++top]=value;//
     }
