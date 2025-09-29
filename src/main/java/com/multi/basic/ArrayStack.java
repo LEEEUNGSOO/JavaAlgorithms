@@ -12,6 +12,7 @@ public class ArrayStack {
         top = -1;
     }
 
+
     //isFull
     public boolean isFull(){
         return top==stack.length-1;
