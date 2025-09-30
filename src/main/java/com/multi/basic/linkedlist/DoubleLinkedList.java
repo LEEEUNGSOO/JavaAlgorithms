@@ -40,22 +40,40 @@ public class DoubleLinkedList {
         }
         System.out.println();
     }
-    public void delete(int value){
+    // 4. 삭제(Delete) - 특정 값 제거
+    public void delete(int value) {
+        Node current = head;
+
+        while (current != null) {
+            if (current.data == value) {
+                if (current == head) { // 삭제할 노드가 head인 경우
+                    head = current.next;
+                    if (head != null) head.prev = null;
+                } else if (current == tail) { // 삭제할 노드가 tail인 경우
+                    tail = current.prev;
+                    if (tail != null) tail.next = null;
+                } else { // 중간 노드인 경우
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                }
+                System.out.println("노드 " + value + "가 삭제되었습니다.");
+                return;
+            }
+            current = current.next;
+        }
+        System.out.println("노드 " + value + "를 찾을 수 없습니다.");
+    }
+    public void update(int oldValue, int newValue) {
         Node current = head;
         while (current != null) {
-            if (current.data == value) {//삭제할 데이터를 찾았을때....
-                if(current == head){
-                    head =current.next;
-                    if(head == null){
-                        head.prev = null;
-                    }else if(current == tail){
-                        tail =current.prev;//
-                    }
-
-                }
-
-            }
-        }
+            if(current.data == oldValue){//10 ,10
+                current.data = newValue;
+                System.out.println("oldValue="+oldValue +"로 "+ newValue+"변경되었습니다");
+                return;
+            }//if
+            current = current.next;
+        }//while
+        System.out.println("노드 " + oldValue + "를 찾을 수 없습니다.");
     }
 
     public static void main(String[] args) {
@@ -64,6 +82,10 @@ public class DoubleLinkedList {
         list.addLast(20);
         list.addLast(30);
         list.addLast(40);
+        list.printList();
+        list.delete(20);
+        list.printList();
+        list.update(40,300);
         list.printList();
     }
 
