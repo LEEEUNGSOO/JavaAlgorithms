@@ -89,18 +89,16 @@ public class MultiRowCrud {
             col--;
         }
     }
-
-
-
     public static void main(String[] args) {
         MultiRowCrud mr=new MultiRowCrud();
-        mr.add(10);
-        mr.add(20);
-        mr.add(30);
-        mr.add(40);
-        mr.add(50);
-        mr.add(60);
+        mr.add(10);//row =0 ,col=0
+        mr.add(20);//row =0 ,col=1
+        mr.add(30);//row =0 ,col=2
+        mr.add(40);//row =1 ,col=0
         mr.disp();
+        mr.delete(40);
+        mr.disp();
+
 
 
 
