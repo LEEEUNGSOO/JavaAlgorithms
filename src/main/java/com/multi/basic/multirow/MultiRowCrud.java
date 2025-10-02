@@ -39,6 +39,58 @@ public class MultiRowCrud {
         }//for
         System.out.println();
     }
+    //값의대한  배열을 통해서 행과 열을 반환
+    public int [] search(int data){
+        for(int i=0;i< m.length;i++){
+            for(int j=0;j<m[i].length;j++){
+                if(m[i][j]==data){
+                    return new int[]{i,j};
+                }
+            }
+        }
+        return  null;
+    }
+    public void modify(int orgin,int change){
+        int []rs=search(orgin);
+        if(rs==null)return;
+        m[rs[0]][rs[1]]=change;
+    }
+    public void delete(int data) {
+        // 삭제할 데이터 위치 찾기
+        int[] rs = search(data);
+        if (rs == null) return;
+
+        int r = rs[0]; // 행
+        int c = rs[1]; // 열
+
+        for (int i = r; i < m.length; i++) { // 행 반복
+            for (int j = c; j < m[i].length; j++) { // 열 반복
+                // 마지막 요소라면 그냥 0으로
+                if (i == m.length - 1 && j == m[i].length - 1) {
+                    m[i][j] = 0;
+                    break;
+                }
+
+                // 현재 열이 마지막 열이라면 → 다음 행의 첫 번째 값 가져오기
+                if (j == m[i].length - 1) {
+                    m[i][j] = m[i + 1][0];
+                } else {
+                    m[i][j] = m[i][j + 1];
+                }
+            }//내부 for
+            c = 0; // 다음 행에서는 열을 0부터 시작
+        }//외부 for
+
+        // row, col 조정
+        if (col == 0) {
+            row--;
+            col = m[0].length - 1;
+        } else {
+            col--;
+        }
+    }
+
+
 
     public static void main(String[] args) {
         MultiRowCrud mr=new MultiRowCrud();
@@ -49,6 +101,7 @@ public class MultiRowCrud {
         mr.add(50);
         mr.add(60);
         mr.disp();
+
 
 
     }
