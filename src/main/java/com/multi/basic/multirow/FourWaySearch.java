@@ -48,6 +48,18 @@ public class FourWaySearch {
                 }//if
             }//for
         }//for
+       //x를 기준으로 1행 1열을 기준으로 합니다
+        //nr=r+deltas[0][0]     1+(-1)=0
+        //nc=c+deltas[0][1]     1+0   =1  res=grid[0][1]==='3'  상
+
+        //nr=r+deltas[1][0]     1+1=2
+        //nc=c+deltas[1][1]     1+0   =1  res=grid[2][1]==='4'  하
+
+        //nr=r+deltas[2][0]     1+0=1
+        //nc=c+deltas[2][1]     1+-1 =0  res=grid[1][0]==='1'  좌
+
+        //nr=r+deltas[3][0]     1+0=1
+        //nc=c+deltas[3][1]     1+1=2  res=grid[1][2]==='3'  우
 
         System.out.println("---------------------------------------------");
         for(char c[]:grid) {
