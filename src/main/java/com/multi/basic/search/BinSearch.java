@@ -35,7 +35,13 @@ public class BinSearch {
         }
        // System.out.println(Arrays.toString(x));
         System.out.println("검색할 값:");
-        int kyt=stdIn.nextInt();
+        int ky=stdIn.nextInt();
+        int idx=binSearch(x,num,ky);
+        if(idx==-1){
+            System.out.println("검색값이 없습니다");
+        }else{
+            System.out.println("검색값은 x["+idx+"]");
+        }
 
 
     }
