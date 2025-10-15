@@ -8,7 +8,7 @@ public class ShellSort {
         }
         System.out.println();
     }
-    public  void shellSort(int []array) {
+    public static void shellSort(int []array) {
       // int[] array = {12, 34, 54, 2, 3};(0 ,1,2,3,4 )
       //배열의 갯수  array.length
         //(12,54),(34,2),(3) gap2
@@ -37,25 +37,27 @@ public class ShellSort {
             //1단계 gap=2   (0,2) ,(1,3) ,(2,4)       정렬된 상태 [12,2,3,34,54]
             for(int i=gab; i<n; i++) { //2
                 int temp=array[i];
-
-
+                int j;
+                for( j=i; j>=gab&& array[j-gab]> temp; j-=gab) {
+                    //j==2
+                    array[j] = array[j-gab];
+                }
+                array[j]=temp;
             }
 
         }
 
-
-
-
-
-
-
-
+        // i    gab     j    비교index
+        // 2    2       2
+        // 3    2       3
+        // 4    2       4
     }
     public static void main(String[] args) {
         int[] array = {12, 34, 54, 2, 3};
         System.out.println("SellSort Before");
         printArray(array);
         System.out.println("SellSort After");
+        shellSort(array);
         printArray(array);
 
     }
